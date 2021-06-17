@@ -3,7 +3,7 @@ var server = net.createServer(function(client) {
     client.setTimeout(500);
     client.setEncoding('utf8');
     client.on('data', function(data) {
-    writeData(client, 'Sending: ' + data.toString());
+        writeData(client, 'Sending: ' + data.toString());
 });
 client.on('end', function() {
     server.getConnections(function(err, count){
@@ -20,6 +20,7 @@ server.listen(8107, function() {
     server.on('close', function(){
     });
     server.on('error', function(err){
+        console.log(err)
     });
 });
 function writeData(socket, data){
