@@ -21,14 +21,14 @@ return client;
 function writeData(socket, data){
     var success = !socket.write(data);
     if (!success){
-    (function(socket, data){
-    socket.once('drain', function(){
-    writeData(socket, data);
-    });
-    })(socket, data);
+        (function(socket, data){
+            socket.once('drain', function(){
+                writeData(socket, data);
+            });
+        })(socket, data);
     }
-    }
-    var Alice = getConnection("Alice's Connection");
-    var Bob = getConnection("Bob's Connection");
-    writeData(Alice, "Alice|Hi, Server");
-    writeData(Bob, "Bob|Hello, Server")
+}
+var Alice = getConnection("Alice's Connection");
+var Bob = getConnection("Bob's Connection");
+writeData(Alice, "Alice|Hi, Server");
+writeData(Bob, "Bob|Hello, Server")
