@@ -18,7 +18,7 @@ var io = require("socket.io")(server);
 var roomName;
 io.on("connection", function (socket) {
   console.log("connect");
-  var instanceId = "i-0b4eb207aae2d06cc";
+  var instanceId = socket.id;
   socket.on("joinRoom", function (data) {
     console.log(data);
     socket.join(data.roomName);
